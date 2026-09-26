@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Join a drawing - Umipen</title>
+<meta property="og:title" content="Umipen">
+<meta property="og:description" content="Join a drawing in Umipen">
+<style>
+body{margin:0;background:#1e1e1e;color:#ddd;font-family:system-ui,sans-serif;line-height:1.5}
+main{max-width:28rem;margin:0 auto;padding:20vh 16px 2rem;text-align:center}
+a{color:#3d8bfd}
+.button{display:inline-block;padding:.6rem 1.2rem;border-radius:6px;background:#3d8bfd;color:#fff;text-decoration:none}
+</style>
+</head>
+<body>
+<main>
+<div id="join" hidden>
+<h1>Joining a drawing</h1>
+<p><a id="open" class="button" href="#">Open in Umipen</a></p>
+</div>
+<p id="bad" hidden>This join link is incomplete.</p>
+<p><span id="lead" hidden>Don't have Umipen? </span><a href="https://axilirate.itch.io/umipen">Download on itch.io</a></p>
+</main>
+<script>
+var t = location.hash.slice(1);
+if (/^([0-9a-fA-F]{2})+$/.test(t)) {
+  var u = "umipen://join/" + t;
+  document.getElementById("open").href = u;
+  document.getElementById("join").hidden = false;
+  document.getElementById("lead").hidden = false;
+  location.href = u;
+} else {
+  document.getElementById("bad").hidden = false;
+}
+</script>
+</body>
+</html>
